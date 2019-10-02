@@ -9,10 +9,12 @@ import rootReducers from "./reducers/rootReducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import logger from "redux-logger";
+import reduxPromise from "redux-promise-middleware";
 
 const store = createStore(
   rootReducers,
-  composeWithDevTools(applyMiddleware(thunk))
+  composeWithDevTools(applyMiddleware(thunk, logger, reduxPromise))
 );
 
 ReactDOM.render(

@@ -9,3 +9,6 @@ npm i semantic-ui-react semantic-ui-css
 ### Test
 
 npm i semantic-ui-react semantic-ui-css
+npm i redux-logger // stateleri consola yazar
+npm i axios // api bağlanmak için
+npm i redux-promise-middleware

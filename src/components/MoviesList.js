@@ -1,13 +1,39 @@
 import React from "react";
 import PropTypes from "prop-types";
+import MovieCard from "./MovieCard";
+import { Grid } from "semantic-ui-react";
+import { DotLoader } from "react-spinners";
 
-const MoviesList = ({ movies }) => {
+const override = `
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
+const MoviesList = ({ movies, deleteMovie }) => {
   const emptyMessage = <p>Film bulunamadı</p>;
-
   const moviesList = (
     <div>
-      <h1>Film Listesi</h1>
-      <h2>Test</h2>
+      <DotLoader
+        css={override}
+        sizeUnit={"px"}
+        size={100}
+        color={"#ff3333"}
+        loading={movies.fetching}
+      />
+      {movies.error.response ? (
+        <h3>Hata, veri gelmedi.</h3>
+      ) : (
+        <Grid stackable columns={4}>
+          {movies.movieList.map(movie => (
+            <MovieCard
+              key={movie._id}
+              deleteMovie={deleteMovie}
+              movie={movie}
+            />
+          ))}
+        </Grid>
+      )}
     </div>
   );
 
@@ -15,7 +41,9 @@ const MoviesList = ({ movies }) => {
 };
 
 MoviesList.propTypes = {
-  movies: PropTypes.array.isRequired
+  movies: PropTypes.shape({
+    movieList: PropTypes.array.isRequired
+  }).isRequired
 };
 
 export default MoviesList;

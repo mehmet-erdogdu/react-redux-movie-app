@@ -3,6 +3,7 @@ import mongodb from "mongodb";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import cors from "cors";
+import { setTimeout } from "timers";
 
 const app = express();
 app.use(bodyParser.json({ limit: "50mb" }));
@@ -11,7 +12,6 @@ app.use(cors());
 dotenv.config();
 
 const dbUrl = `${process.env.DB_HOST}/${process.env.DB_NAME}`;
-
 const validate = data => {
   let errors = {};
   if (data.title === "") errors.title = "Can't be empty";

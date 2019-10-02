@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { menuStyle, fixedMenuStyle } from "../helpers/styleHelper";
 import { Container, Image, Menu, Visibility } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default class Header extends Component {
   state = {
@@ -37,14 +37,13 @@ export default class Header extends Component {
                   size="mini"
                   src="http://www.pngmart.com/files/5/Movie-PNG-Image.png"
                 />
+                <Menu.Item header>Taigaflix</Menu.Item>
               </Menu.Item>
-              <Menu.Item header as={Link} to="/">
-                Film Uygulaması
-              </Menu.Item>
-              <Menu.Item as={Link} to="movies">
+
+              <Menu.Item as={NavLink} to="/movies">
                 Filmler
               </Menu.Item>
-              <Menu.Item as={Link} to="add-movie">
+              <Menu.Item as={NavLink} to="/new-movie">
                 Yeni Film
               </Menu.Item>
             </Container>

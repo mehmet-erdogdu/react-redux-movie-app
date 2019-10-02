@@ -27,3 +27,12 @@
     transform: rotate(360deg);
   }
 }
+
+.inlineError {
+  color: #ff3333;
+}
+
+/* .cardTitle {
+  padding: 3px;
+  text-align: center;
+} */
