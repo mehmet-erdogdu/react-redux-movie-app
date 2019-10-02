@@ -28,7 +28,7 @@ export function onNewMovieSubmit({ title, cover }) {
 export function onUpdateMovieSubmit({ _id, title, cover }) {
   return dispatch => {
     dispatch({
-      type: "NEW_MOVIE",
+      type: "UPDATE_MOVIE",
       payload: axios.put(`${API_BASE}/movies/${_id}`, {
         title,
         cover

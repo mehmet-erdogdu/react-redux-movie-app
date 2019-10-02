@@ -18,7 +18,7 @@ class NewMovieForm extends Component {
     onUpdateMovieSubmit: PropTypes.func.isRequired
   };
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { movie } = nextProps.newMovie;
     if (movie.title && movie.title !== this.state.title) {
       this.setState({ title: movie.title, cover: movie.cover });
@@ -47,8 +47,8 @@ class NewMovieForm extends Component {
 
   validate = e => {
     const errors = {};
-    if (this.state.title == "") errors.title = "Başlık girilmedi";
-    if (this.state.cover == "") errors.cover = "Resim seçilmedi";
+    if (!this.state.title) errors.title = "Başlık girilmedi";
+    if (!this.state.cover) errors.cover = "Resim seçilmedi";
     return errors;
   };
 
